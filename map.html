@@ -15,13 +15,45 @@
     <!-- https://developers.google.com/maps/documentation/javascript/adding-a-google-map -->
     <script>
       function initMap() {
+<<<<<<< HEAD
         var uluru = {lat: 28.7, lng: 77.1};
+=======
+        
+        var myLatlng = {lat: 20.8920864, lng: 78.7516549};
+
+>>>>>>> 09df6935736be98058cf79a24ab7d1ab2130456c
         var map = new google.maps.Map(document.getElementById('map'), {
           zoom: 4,
-          center: uluru
+          center: myLatlng
         });
-        var marker = new google.maps.Marker({
-          position: uluru,
+
+        var Bangalore = new google.maps.Marker({
+          position: {lat: 18.7487615, lng: 79.442566},
+          label: '',
+          map: map
+        });
+
+        var Chennai = new google.maps.Marker({
+          position: {lat: 16.5102403, lng: 80.5744209},
+          label: '',
+          map: map
+        });
+
+        var kharagpur = new google.maps.Marker({
+          position: {lat: 22.3146164, lng: 87.3011398},
+          label: '',
+          map: map
+        });
+
+        var delhi = new google.maps.Marker({
+          position: {lat: 28.5166817, lng: 77.2580453},
+          label: '',
+          map: map
+        });
+
+        var hyderabad = new google.maps.Marker({
+          position: {lat: 17.4122998, lng: 78.26796},
+          label: '',
           map: map
         });
       }
