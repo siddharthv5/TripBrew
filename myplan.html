@@ -18,19 +18,12 @@
   <link rel="stylesheet" type="text/css" href="css/carousel.css">
   <link rel="stylesheet" type="text/css" href="css/Stylesheethome.css">
 
-  <link href="//cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/build/css/bootstrap-datetimepicker.css" rel="stylesheet">
+   <link rel="stylesheet" href="bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" />
 
-  <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
-  <script src="//cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/src/js/bootstrap-datetimepicker.js"></script>
 
-  <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
-  <script type="text/javascript" src="bower_components/moment/min/moment.min.js"></script>
-  <script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
-  <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css" />
-  <link rel="stylesheet" href="/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" />
 
-  <script type="text/javascript" src="js/ie-emulation-modes-warning.js"></script>
+ 
+
   </head>
 
   <style type="text/css">
@@ -127,37 +120,33 @@
           </div>
 
           <div class="col-md-8">
-            <div class="container">
-              <div class="row">
-                  <div class="col-sm-2" style="margin-right: 60px;">
-                      <div class="form-group" style="width: 200px;">
-                          <div class='input-group date' id='datetimepicker1'>
-                              <input type='text' class="form-control" />
-                              <span class="input-group-addon">
-                                  <span class="glyphicon glyphicon-calendar"></span>
-                              </span>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="col-sm-2">
-                      <div class="form-group" style="width: 200px;">
-                          <div class='input-group date' id='datetimepicker1'>
-                              <input type='text' class="form-control" />
-                              <span class="input-group-addon">
-                                  <span class="glyphicon glyphicon-calendar"></span>
-                              </span>
-                          </div>
-                      </div>
-                  </div>
-                  <script type="text/javascript">
-                      $(function () {
-                          $('#datetimepicker1').datetimepicker();
-                      });
-                  </script>
-              </div>
-          </div>
+             <div class="container">
+                <div class="row">
+                    <div class="col-sm-2" style="margin-right:60px;">
+                        <div class="form-group" style="width:200px;">
+                            <div class='input-group date' id='datetimepicker1'>
+                                <input type='text' class="form-control" />
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
 
-            
+                    <div class="col-sm-2">
+                        <div class="form-group" style="width:200px;">
+                            <div class='input-group date' id='datetimepicker2'>
+                                <input type='text' class="form-control" />
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>  
+
           </div>
 
         </div> 
@@ -180,7 +169,7 @@
             <tbody>
               <tr>
                 <td>1</td>
-                <td><form>s
+                <td><form>
                <input type="text" name="place..."><br> </form></td>
               </tr>
 
@@ -219,24 +208,33 @@
 
     </div>
 
-
-
-
-
-
       <!-- FOOTER -->
-      <div class="footer">
+    <div class="footer">
       <footer>
         <p class="pull-right"><a href="#"></a></p>
         <p>&copy; 2017 TripBrew Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
       </footer>
 
     </div>
-</body>
+
+
+
+
+  <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+  <script type="text/javascript" src="bower_components/moment/min/moment.min.js"></script>
+  <script type="text/javascript" src="bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+
 
   <!-- Include your style sheets at the bottom of the page: -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="js/holder.min.js"></script>
   <script type="text/javascript" src="js/ie10-viewport-bug-workaround.js"></script>
+
+    <script type="text/javascript">
+            $(function () {
+                $('#datetimepicker1,#datetimepicker2').datetimepicker();
+            });
+    </script>
+
+  </body>
 </html>
