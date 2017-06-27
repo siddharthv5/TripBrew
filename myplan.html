@@ -17,6 +17,19 @@
   <link rel="stylesheet" type="text/css" href="css/ie10-viewport-bug-workaround.css">
   <link rel="stylesheet" type="text/css" href="css/carousel.css">
   <link rel="stylesheet" type="text/css" href="css/Stylesheethome.css">
+
+  <link href="//cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/build/css/bootstrap-datetimepicker.css" rel="stylesheet">
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
+  <script src="//cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/src/js/bootstrap-datetimepicker.js"></script>
+
+  <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+  <script type="text/javascript" src="bower_components/moment/min/moment.min.js"></script>
+  <script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+  <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" />
+
   <script type="text/javascript" src="js/ie-emulation-modes-warning.js"></script>
   </head>
 
@@ -54,7 +67,7 @@
             <div id="navbar" class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
                 <li><a href="homepage.html">Home</a></li>
-                <li><a href="myplan.html">My Plan</a></li>
+                <li><a href="">My Plan</a></li>
                 <li><a href="recommended.html">Recommended</a></li>
                 <li><a href="aboutus.html">About Us</a></li>          
                </ul>
@@ -114,11 +127,10 @@
           </div>
 
           <div class="col-md-8">
-
             <div class="container">
               <div class="row">
-                  <div class='col-sm-6'>
-                      <div class="form-group" style="width:200px;">
+                  <div class="col-sm-2" style="margin-right: 60px;">
+                      <div class="form-group" style="width: 200px;">
                           <div class='input-group date' id='datetimepicker1'>
                               <input type='text' class="form-control" />
                               <span class="input-group-addon">
@@ -127,8 +139,24 @@
                           </div>
                       </div>
                   </div>
+                  <div class="col-sm-2">
+                      <div class="form-group" style="width: 200px;">
+                          <div class='input-group date' id='datetimepicker1'>
+                              <input type='text' class="form-control" />
+                              <span class="input-group-addon">
+                                  <span class="glyphicon glyphicon-calendar"></span>
+                              </span>
+                          </div>
+                      </div>
+                  </div>
+                  <script type="text/javascript">
+                      $(function () {
+                          $('#datetimepicker1').datetimepicker();
+                      });
+                  </script>
               </div>
           </div>
+
             
           </div>
 
@@ -137,7 +165,7 @@
           <hr>
 
           <div class="">
-          <label class="control-label sr-only" for="trip_details">Why do you want to teach?</label>
+          <label class="control-label sr-only" for="trip_details">Tell us about your trip?</label>
           <textarea name="trip_details" rows="3" cols="50" id="trip_details" class="form-control" placeholder="Please mention the trip details here"></textarea>
           </div>
           <br>
@@ -193,7 +221,7 @@
     </div>
 
 
-    
+
 
 
 
@@ -205,20 +233,11 @@
       </footer>
 
     </div>
-
-    <script type="text/javascript">
-        $(function () {
-            $('#datetimepicker1').datetimepicker();
-        });
-    </script>
-
+</body>
 
   <!-- Include your style sheets at the bottom of the page: -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <script type="text/javascript" src="js/moment-with-locales.js"</script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="js/holder.min.js"></script>
   <script type="text/javascript" src="js/ie10-viewport-bug-workaround.js"></script>
-</body>
-
 </html>
