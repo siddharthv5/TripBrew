@@ -19,18 +19,9 @@
   <link rel="stylesheet" type="text/css" href="css/Stylesheethome.css">
 
    <link rel="stylesheet" href="bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" />
-
-
-
- 
-
   </head>
 
   <style type="text/css">
-  	.footer{
-  		margin-top: 600px
-  	}
-
   	#other{
   		width: 75%;
 
@@ -41,7 +32,7 @@
     }
   </style>
 
-<body style="background-color: #f5f5f5">
+<body style="background-color: #f5f5f5; padding-bottom: 0px">
 
  <div class="navbar-wrapper">
       <div class="container">
@@ -86,7 +77,10 @@
 
     <div class="container" style="margin-top:100px;">
 
-    <h3>Brew Your Trip</h3>
+    <div id="titlediv">
+      <h3 style="display: inline-block;">Brew Your Trip</h3>
+      <a href="savedplans.html"><button type="button" class="btn btn-primary btn-lg" style="margin-left: 500px">Back to My Plans</button></a>
+    </div>
 
     <div class="row" style="margin-top:20px;">
 
@@ -208,7 +202,7 @@
 
     </div>
 
-      <h4 style="margin-left:100px"><a href="savedplans.html">Back to My Plans</a> </h4>
+      
 
       <!-- FOOTER -->
     <div class="footer">
@@ -218,8 +212,6 @@
       </footer>
 
     </div>
-
-
 
 
   <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
