@@ -123,7 +123,7 @@
           <p class="lead"> India is a gorgeous location to go to year round. There are wonderful sights to see, both in terms of historical architecture, as well as nature and greenery. During the summer season up in the north, it can get pretty hot, but it is preferable to visit areas like Rajasthan, Agra, Lucknow, and Delhi.</p>
         </div>
         <div class="col-md-5">
-          <img class="featurette-image img-responsive center-block" data-src="holder.js/500x500/auto" src= "images/MAP.png" alt="Generic placeholder image" style="height:500px; width: 500px">
+          <div id="map" style="width: 500px;height: 500px"></div>
         </div>
       </div>
 
@@ -186,6 +186,51 @@ have a relaxed, non-strict vacation and therefore we decided to make this produc
 </body>
 
   <!-- Include your style sheets at the bottom of the page: -->
+  <script>
+      function initMap() {
+        
+        var myLatlng = {lat: 20.8920864, lng: 78.7516549};
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 4,
+          center: myLatlng
+        });
+
+        var Jaipur = new google.maps.Marker({
+          position: {lat: 26.9, lng: 75.7},
+          label: '',
+          map: map
+        });
+
+        var Jaisalmer = new google.maps.Marker({
+          position: {lat: 26.9, lng: 70.9},
+          label: '',
+          map: map
+        });
+
+        var Agra = new google.maps.Marker({
+          position: {lat:27.1, lng:78.0},
+          label: '',
+          map: map
+        });
+
+        var Delhi = new google.maps.Marker({
+          position: {lat: 28.5166817, lng: 77.2580453},
+          label: '',
+          map: map
+        });
+
+        var Hyderabad = new google.maps.Marker({
+          position: {lat: 17.3, lng: 78.4},
+          label: '',
+          map: map
+        });
+
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1F2Na2ySDY0tNR84D3GVayZM1MhJt8kI&callback=initMap">
+    </script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="js/holder.min.js"></script>
