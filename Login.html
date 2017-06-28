@@ -123,16 +123,18 @@
           </label>
         </div>
 
-        <input type="button" class="btn btn-lg btn-primary btn-block" onclick="signInUser()" value='Login'></input> <br/>
+        <input type="button" class="btn btn-lg btn-primary btn-block" onclick="signInUser()" value='Login'></input>
 
-      </form>
+    </form>
+<h2 style="font-family:'Delius', cursive; font-size:  30px"> <strong> <center> Or </h2></center></strong> <br>
+    
 
-    </div>
-
-
+   <center><button class="btn btn-danger btn-lg" id="login_with_google" style="display: none;">Login with Google</button></center>
+      <button class="btn btn-warning btn-lg" id="logout" style="display: none;">Logout</button>
+</div>
 
 <!--Sign Up Redirect-->
-
+<br>
  <div class="Signup">
 <p>Don't have an account? Sign up <a href="customersignup.html">here</a>.</p>
 <br>
@@ -151,6 +153,107 @@
 
     </div>
 
+    <button class="btn btn-danger btn-lg" id="login_with_google" style="display: none;">Login with Google</button>
+      <button class="btn btn-warning btn-lg" id="logout" style="display: none;">Logout</button>
+    </div>
+  </div>
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDER1hEA5D9g6NyypKg8MY_kbE1BuKM-F0",
+    authDomain: "bet-sample.firebaseapp.com",
+    databaseURL: "https://bet-sample.firebaseio.com",
+    projectId: "bet-sample",
+    storageBucket: "bet-sample.appspot.com",
+    messagingSenderId: "403051426152"
+  };
+
+  firebase.initializeApp(config);
+
+    //Create an instance of the Google provider object:
+    var provider = new firebase.auth.GoogleAuthProvider();
+
+    $('#login_with_google').click(function(){
+
+    firebase.auth().signInWithRedirect(provider).then(function(result) {
+      // This gives you a Google Access Token. You can use it to access the Google API.
+      var token = result.credential.accessToken;
+      // The signed-in user info.
+      var user = result.user;
+      // ...
+    }).catch(function(error) {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      // The email of the user's account used.
+      var email = error.email;
+      // The firebase.auth.AuthCredential type that was used.
+      var credential = error.credential;
+      // ...
+    });
+
+    });
+
+    /*
+    
+    
+    */
+
+  firebase.auth().onAuthStateChanged(function(user) {
+
+    if (user) {
+      // User is signed in.
+      // 1. Logged In - Show Logout
+      console.log("User is Logged In");
+      console.log(user);
+      console.log("Email:",user.email,user.displayName,user.photoURL);
+
+      $('#logout').show();
+      $('#user_details').show();
+
+      $('#user_email').html(user.email);
+      $('#user_name').html(user.displayName);
+      $('#user_photo').attr('src',user.photoURL);
+
+      $('#login_with_google').hide();
+
+      // ...
+    } else {
+      // User is signed out.
+      // 2. Logged Out/ Not Logged In - Show "Login with Google"
+      console.log("User is not logged in");
+
+      $('#logout').hide();
+      $('#user_details').hide();
+      $('#login_with_google').show();
+      // ...
+    }
+
+  });
+
+
+  $('#logout').click(function(){
+
+    firebase.auth().signOut().then(function() {
+      // Sign-out successful.
+    }).catch(function(error) {
+      
+    });
+
+  });
+
+
+
+
+</script>
+
+
 
 
 
@@ -163,49 +266,106 @@
    <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script>
    <script src="js/custom.js"></script>
 
-  <script type="text/javascript">
+  <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script>
+    <button class="btn btn-danger btn-lg" id="login_with_google" style="display: none;">Login with Google</button>
+      <button class="btn btn-warning btn-lg" id="logout" style="display: none;">Logout</button>
+    </div>
+  </div>
+</div>
 
-  function signOut() {
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDER1hEA5D9g6NyypKg8MY_kbE1BuKM-F0",
+    authDomain: "bet-sample.firebaseapp.com",
+    databaseURL: "https://bet-sample.firebaseio.com",
+    projectId: "bet-sample",
+    storageBucket: "bet-sample.appspot.com",
+    messagingSenderId: "403051426152"
+  };
+
+  firebase.initializeApp(config);
+
+    //Create an instance of the Google provider object:
+    var provider = new firebase.auth.GoogleAuthProvider();
+
+    $('#login_with_google').click(function(){
+
+    firebase.auth().signInWithRedirect(provider).then(function(result) {
+      // This gives you a Google Access Token. You can use it to access the Google API.
+      var token = result.credential.accessToken;
+      // The signed-in user info.
+      var user = result.user;
+      // ...
+    }).catch(function(error) {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      // The email of the user's account used.
+      var email = error.email;
+      // The firebase.auth.AuthCredential type that was used.
+      var credential = error.credential;
+      // ...
+    });
+
+    });
+
+    /*
     
-    if (firebase.auth().currentUser) {
-      firebase.auth().signOut();
-    }
-  }
+    
+    */
 
-   /**
-     * Handles the sign in button press.
-     */
-    function signInUser() {
-      // if (firebase.auth().currentUser) {
-      //   // [START signout]
+  firebase.auth().onAuthStateChanged(function(user) {
 
-      //   firebase.auth().signOut();
-      //   // [END signout]
-      // } else {
-      var email = $('#email').val();
-      var password = $('#password').val();
-        
-        firebase.auth().signInWithEmailAndPassword(email, password)
-        .then(function(user) {
-          console.log("user : ", user);
-          window.location = "myplan.html";
+    if (user) {
+      // User is signed in.
+      // 1. Logged In - Show Logout
+      console.log("User is Logged In");
+      console.log(user);
+      console.log("Email:",user.email,user.displayName,user.photoURL);
 
-        }).catch(function(error) {
-          // Handle Errors here.
-          var errorCode = error.code;
-          var errorMessage = error.message;
-          if (errorCode === 'auth/wrong-password') {
-            alert('Wrong password.');
-          } else {
-            alert(errorMessage);
-          }
-          console.log(error);
-        });
-      //}
+      $('#logout').show();
+      $('#user_details').show();
+
+      $('#user_email').html(user.email);
+      $('#user_name').html(user.displayName);
+      $('#user_photo').attr('src',user.photoURL);
+
+      $('#login_with_google').hide();
+
+      // ...
+    } else {
+      // User is signed out.
+      // 2. Logged Out/ Not Logged In - Show "Login with Google"
+      console.log("User is not logged in");
+
+      $('#logout').hide();
+      $('#user_details').hide();
+      $('#login_with_google').show();
+      // ...
     }
 
-  </script>
+  });
 
+
+  $('#logout').click(function(){
+
+    firebase.auth().signOut().then(function() {
+      // Sign-out successful.
+    }).catch(function(error) {
+      
+    });
+
+  });
+
+
+
+
+</script>
   
   
 
