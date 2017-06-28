@@ -18,16 +18,18 @@
   <link rel="stylesheet" type="text/css" href="css/carousel.css">
   <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="css/dashboard.css">
-  <link href="https://fonts.googleapis.com/css?family=Bubbler+One|Bungee+Inline|Fredericka+the+Great|Indie+Flower|Josefin+Sans|Josefin+Slab|Patrick+Hand+SC|Quattrocento+Sans|Shadows+Into+Light+Two|Walter+Turncoat" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Bubbler+One|Bungee+Inline|Fredericka+the+Great|Indie+Flower|Josefin+Sans|Josefin+Slab|Mallanna|Patrick+Hand+SC|Quattrocento+Sans|Shadows+Into+Light+Two|Walter+Turncoat" rel="stylesheet">
   <script type="text/javascript" src="js/ie-emulation-modes-warning.js"></script>
   </head>
 
-<body style="background-color: #f5f5f5; padding-bottom: 0px">
-
+<body background="images/bg1.png">
  <div class="navbar-wrapper">
       <div class="container">
 
-        <nav class="navbar navbar-inverse navbar-static-top">
+        <nav class="navbar navbar-inverse navbar-static-top" style="background-color:transparent !important;
+      border-color:transparent;
+      background-image:none;
+      box-shadow:none;">
           <div class="container">
             <div class="navbar-header">
               <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -36,33 +38,36 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
+              
+              <a class="navbar-brand" href="homepage.html" style="font-family:'Bubbler One',sans-serif; font-size: 30px; color:#ffffff; padding-top:0 !important;">
+              <img src="images/logorev.png" class="img-responsive" style="width: 150px;height: 60px;">
 
-              <a class="navbar-brand" href="homepage.html" style="font-family:'Bubbler One',sans-serif; font-size: 30px;" ><b>TripBrew</b></a>
-
+              </a>
 
             </div>
             <div id="navbar" class="navbar-collapse collapse" style="font-family: 'Bubbler One', sans-serif; font-size: 20px;">
               <ul class="nav navbar-nav">
-                <li><a href="homepage.html"><b>Home</b></a></li>
-                <li><a href="savedplans.html"><b>My Plan</b></a></li>
-                <li><a href="recommended.html"><b>Recommended</b></a></li>
-                <li><a href="aboutus.html"><b>About Us</b></a></li>
+                <li><a href="homepage.html" style="color:#000000"><b>Home</b></a></li>
+                <li><a href="savedplans.html" style="color:#000000"><b>My Plan</b></a></li>
+                <li><a href="recommended.html" style="color:#000000"><b>Recommended</b></a></li>
+                <li><a href="aboutus.html" style="color:#000000"><b>About Us</b></a></li>
           
                </ul>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"> 
                <ul class="nav navbar-nav navbar-right"> 
-               <li><a href="login.html"><b> Login</b></a></li>
-                <li> <a href="customersignup.html"><b>Sign Up</b></a></li>
+               <li><a href="login.html" style="color:#000000"><b> Login</b></a></li>
+                <li> <a href="customersignup.html" style="color:#000000"><b>Sign Up</b></a></li>
               </ul>
 
               <form class="navbar-form navbar-right">
               <div class="form-group">
               <input type="text" class="form-control" placeholder="Name of a City...">
               </div>
-              <button type="submit" class="btn btn-default">Submit</button>
+              <button type="submit" class="btn btn-default" style="color:#000000"> <b>Submit</button></b>
             </form>
             </div>
-
+            
+             
             </div>
           </div>
         </nav>
@@ -88,10 +93,10 @@
 
           </div>
 
-          <h2 class="sub-header">Customer Plans </h2>
+          <h2 class="sub-header" style="font-family:'Walter Turncoat' ,cursive"> </h2>
           <div class="table-responsive">
-            <table class="table table-striped">
-              <thead>
+            <table class="table table-striped" >
+              <thead style="font-family: 'Bubbler One', sans-serif; font-size: 20px">
                 <tr>
                   <th>Plan No.</th>
                   <th>Location(s) of Travel</th>
@@ -102,7 +107,7 @@
                   <th>Links to Plan</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody style="font-family: 'Indie Flower', cursive; font-size: 20px" >
                 <tr>
                   <td>1</td>
                   <td>Agra,Delhi</td>
@@ -110,7 +115,7 @@
                   <td>31/4/19</td>
                   <td>5/5/19</td>
                    <td> 1500$ </td>
-                  <td><a href="vendorview.html">Click for Plan</a></td>
+                  <td><a href="customerview.html">Click for Plan</a></td>
                 </tr>
                 <tr>
                   <td>2</td>
@@ -119,7 +124,7 @@
                   <td>12/8/13</td>
                   <td>15/8/13</td>
                    <td> Not Given</td>
-                  <td><a href="myplan.html">Click for Plan</a></td>
+                  <td><a href="customerview.html">Click for Plan</a></td>
                 </tr>
                
               </tbody>
