@@ -110,17 +110,21 @@
     <div class="container login">
 
       <form class="form-signin">
+
         <h2 class="form-signin-heading" style="font-family: 'Josefin Slab', serif; font-size: 40px"> <b>Please log in</h2></b>
         <label for="inputEmail" class="sr-only">Email address</label>
-        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+        <input type="text" id="email" class="form-control" placeholder="Email address" required autofocus><br>
+
         <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+        <input type="password" id="password" class="form-control" placeholder="Password" required>
         <div class="checkbox">
           <label>
             <input type="checkbox" value="remember-me"> Remember me
           </label>
         </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Log in</button>
+
+        <input type="button" class="btn btn-lg btn-primary btn-block" onclick="signInUser()" value='Login'></input> <br/>
+
       </form>
 
     </div>
@@ -128,7 +132,7 @@
 
 
 <!--Sign Up Redirect-->
- 
+
  <div class="Signup">
 <p>Don't have an account? Sign up <a href="customersignup.html">here</a>.</p>
 <br>
@@ -155,6 +159,52 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="js/holder.min.js"></script>
   <script type="text/javascript" src="js/ie10-viewport-bug-workaround.js"></script>
+
+   <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script>
+   <script src="js/custom.js"></script>
+
+  <script type="text/javascript">
+
+  function signOut() {
+    
+    if (firebase.auth().currentUser) {
+      firebase.auth().signOut();
+    }
+  }
+
+   /**
+     * Handles the sign in button press.
+     */
+    function signInUser() {
+      // if (firebase.auth().currentUser) {
+      //   // [START signout]
+
+      //   firebase.auth().signOut();
+      //   // [END signout]
+      // } else {
+      var email = $('#email').val();
+      var password = $('#password').val();
+        
+        firebase.auth().signInWithEmailAndPassword(email, password)
+        .then(function(user) {
+          console.log("user : ", user);
+          window.location = "myplan.html";
+
+        }).catch(function(error) {
+          // Handle Errors here.
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          if (errorCode === 'auth/wrong-password') {
+            alert('Wrong password.');
+          } else {
+            alert(errorMessage);
+          }
+          console.log(error);
+        });
+      //}
+    }
+
+  </script>
 
   
   
