@@ -130,7 +130,7 @@
     
 
    <center><button class="btn btn-danger btn-lg" id="login_with_google" style="display: none;">Login with Google</button></center>
-      <button class="btn btn-warning btn-lg" id="logout" style="display: none;">Logout</button>
+      <center><button class="btn btn-warning btn-lg" id="logout" style="display: none;">Logout</button></center>
 </div>
 
 <!--Sign Up Redirect-->
@@ -161,31 +161,66 @@
   </div>
 </div>
 
-<script type="text/javascript" src="js/custom.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-<script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script>
-
-
-
   <!-- Include your style sheets at the bottom of the page: -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="js/holder.min.js"></script>
   <script type="text/javascript" src="js/ie10-viewport-bug-workaround.js"></script>
 
-   <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script>
-   <script>
-     var config = {
-    apiKey: "AIzaSyBmlZg90EbVcpgyqpUaalDkTSQyt3S0cR4",
-    authDomain: "test-1-b6e64.firebaseapp.com",
-    databaseURL: "https://test-1-b6e64.firebaseio.com",
-    projectId: "test-1-b6e64",
-    storageBucket: "test-1-b6e64.appspot.com",
-    messagingSenderId: "382839424607"
-  };
-  firebase.initializeApp(config);
-   </script>
+  <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script>
+
+  <script type="text/javascript" src="js/custom.js"></script>
+
+  <script type="text/javascript">
+
+  function signOut() {
+    
+    if (firebase.auth().currentUser) {
+      firebase.auth().signOut();
+    }
+  }
+
+   /**
+     * Handles the sign in button press.
+     */
+    function signInUser() {
+      // if (firebase.auth().currentUser) {
+      //   // [START signout]
+
+      //   firebase.auth().signOut();
+      //   // [END signout]
+      // } else {
+      var email = $('#email').val();
+      var password = $('#password').val();
+        if (email.length < 4) {
+          alert('Please enter an email address.');
+          return;
+        }
+        if (password.length < 4) {
+          alert('Please enter a password.');
+          return;
+        }
+        firebase.auth().signInWithEmailAndPassword(email, password)
+        .then(function(user) {
+          console.log("user : ", user);
+          window.location = "myplan.html";
+
+        }).catch(function(error) {
+          // Handle Errors here.
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          if (errorCode === 'auth/wrong-password') {
+            alert('Wrong password.');
+          } else {
+            alert(errorMessage);
+          }
+          console.log(error);
+        });
+      //}
+    }
+
+  </script>
 
 <script>
   // Initialize Firebase
