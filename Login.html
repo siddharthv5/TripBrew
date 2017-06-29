@@ -76,7 +76,7 @@
             <div id="navbar" class="navbar-collapse collapse" style="font-family: 'Bubbler One', sans-serif; font-size: 20px;">
               <ul class="nav navbar-nav">
                 <li><a href="homepage.html" style="color:#000000"><strong>Home</strong></a></li>
-                <li><a href="myplan.html" style="color:#000000"><strong>My Plan</strong></a></li>
+                <li><a href="savedplans.html" style="color:#000000"><strong>My Plan</strong></a></li>
                 <li><a href="recommended.html" style="color:#000000"><strong>Recommended</strong></a></li>
                 <li><a href="aboutus.html" style="color:#000000"><strong>About Us</strong></a></li>
 
@@ -265,11 +265,60 @@
         // ...
       });
 
+
     });
+
+    /*
+    
+    
+    */
+
+  firebase.auth().onAuthStateChanged(function(user) {
+
+    if (user) {
+      // User is signed in.
+      // 1. Logged In - Show Logout
+      console.log("User is Logged In");
+      console.log(user);
+      console.log("Email:",user.email,user.displayName,user.photoURL);
+
+      $('#logout').show();
+      $('#user_details').show();
+
+      $('#user_email').html(user.email);
+      $('#user_name').html(user.displayName);
+      $('#user_photo').attr('src',user.photoURL);
+
+      $('#login_with_google').hide();
+
+      // ...
+    } else {
+      // User is signed out.
+      // 2. Logged Out/ Not Logged In - Show "Login with Google"
+      console.log("User is not logged in");
+
+      $('#logout').hide();
+      $('#user_details').hide();
+      $('#login_with_google').show();
+      // ...
+    }
+
+  });
+
+  $('#logout').click(function(){
+
+    firebase.auth().signOut().then(function() {
+      // Sign-out successful.
+    }).catch(function(error) {
+      
+    });
+
+  });
+
+
 
 
 </script>
-  
   
 
 </body>

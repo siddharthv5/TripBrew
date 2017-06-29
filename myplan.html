@@ -189,33 +189,8 @@
                 <th>Activities</th>
               </tr>
             </thead>
-            <tbody>
-              <tr>
-                <td>1</td>
-                <td><form>
-               <input type="text" name="place..."><br> </form></td>
-              </tr>
+            <tbody id="tablebody">
 
-              <tr>
-                <td>2</td>
-                <td><form> <input type="text" name="place..."><br> </form></td></td>
-              </tr>
-
-              <tr>
-                <td>3</td>
-                <td><form> <input type="text" name="place..." style= "min-width"><br> </form></td></td>
-              </tr>
-
-              <tr>
-                <td>4</td>
-                <td><form> <input type="text" name="place..."><br> </form></td></td>
-              </tr>
-
-              <tr>
-                <td>5</td>
-                <td><form> <input type="text" name="place..."><br> </form></td></td>
-              </tr>
-              
            </tbody>  
           </table>
 
@@ -247,7 +222,6 @@
 
     </div>
 
-
   <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
   <script type="text/javascript" src="bower_components/moment/min/moment.min.js"></script>
   <script type="text/javascript" src="bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
@@ -264,8 +238,31 @@
   <script type="text/javascript" src= "js/custom.js"></script>
 
     <script type="text/javascript">
+            function onChangeDate() {
+                start = $('#datetimepicker1').data("DateTimePicker").date();
+                end = $('#datetimepicker2').data("DateTimePicker").date();
+                if (start && end) {
+                  days = end.diff(start, 'days')+1;
+                  saved_text = []
+                  counter = 0
+                  while(true) {
+                    if ($('#activitytext'+counter).length > 0) {
+                      saved_text.push($('#activitytext'+counter).val());
+                    } else {
+                      break;
+                    }
+                    counter+=1;
+                  }
+                  $('#tablebody').html('');
+                  for (var i =0 ; i < days; i++) {
+                    $('#tablebody').append('<tr><td>' + (i+1) + '</td><td><form><input type="text" name="place..." id="activitytext'+i+'"><br> </form></td></td></tr>');
+                    $('activitytext'+i).val(saved_text[i]);
+                  }
+                }
+            }
             $(function () {
-                $('#datetimepicker1,#datetimepicker2').datetimepicker();
+                $('#datetimepicker1').datetimepicker().on('dp.change', onChangeDate);;
+                $('#datetimepicker2').datetimepicker().on('dp.change', onChangeDate);
             });
     </script>
 
