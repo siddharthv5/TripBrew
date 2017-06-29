@@ -116,13 +116,11 @@
    <div class="col-md-8">
        
        <div class="panel panel-default"></div>
-        <div class="panel-heading"></div>
-        <div class="panel-body"> </div>
-
         <div class="row">
 
         <div class="col-md-4">
-          
+          <h3>Location:</h3>
+
           <div class="dropdown">
 
             <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -141,12 +139,13 @@
           </div> 
 
           </div>
-
+        
           <div class="col-md-8">
              <div class="container">
                 <div class="row">
                     <div class="col-sm-2" style="margin-right:60px;">
                         <div class="form-group" style="width:200px;">
+                        <h3>Start Date</h3>
                             <div class='input-group date' id='datetimepicker1'>
                                 <input type='text' class="form-control" />
                                 <span class="input-group-addon">
@@ -155,9 +154,9 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="col-sm-2">
                         <div class="form-group" style="width:200px;">
+                        <h3>End Date</h3>
                             <div class='input-group date' id='datetimepicker2'>
                                 <input type='text' class="form-control" />
                                 <span class="input-group-addon">
@@ -183,7 +182,7 @@
           <br>
 
           <table class="table table-striped" style="font-family:'Patrick Hand SC', cursive; font-size: 20px; " >
-            <thead >
+            <thead id='tablehead' style="display: none;">
               <tr>
                 <th>Days</th>
                 <th>Activities</th>
@@ -242,6 +241,8 @@
                 start = $('#datetimepicker1').data("DateTimePicker").date();
                 end = $('#datetimepicker2').data("DateTimePicker").date();
                 if (start && end) {
+                  $('#tablehead').show();
+
                   days = end.diff(start, 'days')+1;
                   saved_text = []
                   counter = 0
@@ -258,6 +259,8 @@
                     $('#tablebody').append('<tr><td>' + (i+1) + '</td><td><form><input type="text" name="place..." id="activitytext'+i+'"><br> </form></td></td></tr>');
                     $('activitytext'+i).val(saved_text[i]);
                   }
+                } else {
+                  $('#tablehead').hide();
                 }
             }
             $(function () {
