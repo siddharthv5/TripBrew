@@ -60,8 +60,23 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"> 
                <ul class="nav navbar-nav navbar-right"> 
 
-               <li><a href="login.html" style="color:#000000"><b> Login</b></a></li>
-                <li> <a href="customersignup.html" style="color:#000000"><b>Sign Up</b></a></li>
+                  <li>
+                  <a href="login.html" style="color:#000000;display: none;" id="header_login">
+                    <b> Login</b>
+                  </a>
+                </li>
+
+                <li> 
+                  <a href="customersignup.html" style="color:#000000; display: none;" id="header_signup">
+                    <b>Sign Up</b>
+                  </a>
+                </li>
+
+                <li> 
+                  <a href="#" style="color:#000000; display: none;" id="header_logout">
+                    <b>Logout</b>
+                  </a>
+                </li>
               </ul>
 
               <form class="navbar-form navbar-right">
@@ -228,6 +243,7 @@
         // Email Verification sent!
         // [START_EXCLUDE]
         alert('Email Verification Sent!');
+        window.location = "myplan.html";
         // [END_EXCLUDE]
       });
       // [END sendemailverification]

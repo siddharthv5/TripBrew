@@ -68,7 +68,7 @@
 
                 <li>
                   <a href="login.html" style="color:#000000;display: none;" id="header_login">
-                    <b> Login</b>
+                    <b>Login</b>
                   </a>
                 </li>
 
@@ -106,9 +106,8 @@
       <form class="form-signin" style="max-width: 530px;display:none; " id="register-as-agent-form">
         <h2 class="form-signin-heading" style="font-family: 'Josefin Slab', serif; font-size: 40px"><b>Register as Travel Agent</b></h2>
         <hr>
-        <input type="contact number" id="inputContactnumber" class="form-control" placeholder="Contact Number" required>
-        <input type="companyname" id="inputCompanyname" class="form-control" placeholder="Company Name" required>
-        <input type="companycontactnumber" id="inputCompanycontactnumber" class="form-control" placeholder="Company Contact Number" required>
+        <input type="number" id="inputContactnumber" class="form-control" placeholder="Contact Number" required>
+        <input type="text" id="inputCompanyname" class="form-control" placeholder="Company Name" required>
         
         <div class="signinbutton">
         <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
@@ -181,12 +180,10 @@
 
       var inputContactnumber = $('#inputContactnumber').val();
       var inputCompanyname = $('#inputCompanyname').val();
-      var inputCompanycontactnumber = $('#inputCompanycontactnumber').val();
 
       var payload = {
         contactNo: inputContactnumber,
         companyName: inputCompanyname,
-        companyContact:inputCompanycontactnumber
       };
 
       console.log(payload);

@@ -85,8 +85,23 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"> 
                <ul class="nav navbar-nav navbar-right"> 
 
-               <li><a href="login.html" style="color:#000000"><b> Login </b></a></li>
-              <li> <a href="customersignup.html" style="color:#000000"><b>Sign Up</b></a></li>
+                 <li>
+                  <a href="login.html" style="color:#000000;display: none;" id="header_login">
+                    <b> Login</b>
+                  </a>
+                </li>
+
+                <li> 
+                  <a href="customersignup.html" style="color:#000000; display: none;" id="header_signup">
+                    <b>Sign Up</b>
+                  </a>
+                </li>
+
+                <li> 
+                  <a href="#" style="color:#000000; display: none;" id="header_logout">
+                    <b>Logout</b>
+                  </a>
+                </li>
               </ul>
 
               <form class="navbar-form navbar-right">
@@ -230,11 +245,12 @@
 
     $('#login_with_google').click(function(){
 
-      firebase.auth().signInWithRedirect(provider).then(function(result) {
+      firebase.auth().signInWithPopup(provider).then(function(result) {
         // This gives you a Google Access Token. You can use it to access the Google API.
         var token = result.credential.accessToken;
         // The signed-in user info.
         var user = result.user;
+
 
         window.location = "myplan.html";
         // ...
@@ -250,18 +266,6 @@
       });
 
     });
-
-
-    $('#logout').click(function(){
-
-    firebase.auth().signOut().then(function() {
-      // Sign-out successful.
-    }).catch(function(error) {
-      
-    });
-
-  });
-
 
 
 </script>
