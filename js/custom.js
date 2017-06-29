@@ -15,3 +15,44 @@
     messagingSenderId: "382839424607"
   };
   firebase.initializeApp(config);
+
+  firebase.auth().onAuthStateChanged(function(user) {
+
+    if(user){
+
+      // Signed in
+
+      $('#header_logout').show();
+      $('#header_login').hide();
+      $('#header_signup').hide();
+      $('#login_with_google').hide();
+      $('#logout').show();
+
+
+    }else{
+
+      // Not Signed In
+
+      $('#header_logout').hide();
+      $('#header_login').show();
+      $('#header_signup').show();
+      $('#login_with_google').show();
+      $('#logout').hide();
+
+    }
+
+
+  });
+
+
+  $('#header_logout').click(function(){
+
+    firebase.auth().signOut().then(function() {
+      // Sign-out successful.
+    }).catch(function(error) {
+      
+    });
+
+  });
+
+

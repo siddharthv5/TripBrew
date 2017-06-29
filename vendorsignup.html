@@ -18,6 +18,9 @@
 
   <link href="https://fonts.googleapis.com/css?family=Bubbler+One|Bungee+Inline|Fredericka+the+Great|Indie+Flower|Josefin+Sans|Josefin+Slab|Patrick+Hand+SC|Quattrocento+Sans|Shadows+Into+Light+Two|Walter+Turncoat" rel="stylesheet">
 
+        <link rel="stylesheet" type="text/css" href="css/signin.css">
+
+
 <style type="text/css">
 
 .footer{
@@ -63,8 +66,24 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"> 
                <ul class="nav navbar-nav navbar-right"> 
 
-               <li><a href="login.html" style="color:#000000"><b> Login</b></a></li>
-                <li> <a href="customersignup.html" style="color:#000000"><b>Sign Up</b></a></li>
+                <li>
+                  <a href="login.html" style="color:#000000;display: none;" id="header_login">
+                    <b> Login</b>
+                  </a>
+                </li>
+
+                <li> 
+                  <a href="customersignup.html" style="color:#000000; display: none;" id="header_signup">
+                    <b>Sign Up</b>
+                  </a>
+                </li>
+
+                <li> 
+                  <a href="#" style="color:#000000; display: none;" id="header_logout">
+                    <b>Logout</b>
+                  </a>
+                </li>
+
               </ul>
 
               <form class="navbar-form navbar-right">
@@ -84,49 +103,99 @@
 
 
 <div class="container">
-
-      <form class="form-signin">
-        <h2 class="form-signin-heading" style="font-family: 'Josefin Slab', serif; font-size: 40px"><b>Vendor Sign up</h2></b>
-        <label for="inputEmail" class="sr-only">Email address</label>
-        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-        <input type="username" id="inputUsername" class="form-control" placeholder="Username" required autofocus>
-        <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-        <input type="password" id="inputPassword" class="form-control" placeholder="Repeat Password" required>
+      <form class="form-signin" style="max-width: 530px;display:none; " id="register-as-agent-form">
+        <h2 class="form-signin-heading" style="font-family: 'Josefin Slab', serif; font-size: 40px"><b>Register as Travel Agent</b></h2>
+        <hr>
         <input type="contact number" id="inputContactnumber" class="form-control" placeholder="Contact Number" required>
         <input type="companyname" id="inputCompanyname" class="form-control" placeholder="Company Name" required>
         <input type="companycontactnumber" id="inputCompanycontactnumber" class="form-control" placeholder="Company Contact Number" required>
-        <h1 style="font-size: 20px ;font-family: 'Josefin Slab', serif;"> <b>What can you provide?</h1></b>
-        <input type="checkbox" name="function" value="on"> Accommodation <br>
-        <input type="checkbox" name="function" value="on"> Transport<br>
-        <input type="checkbox" name="function" value="on"> Flights<br>
-        <input type="checkbox" name="function" value="on"> Sightseeing<br>
-        <input type="checkbox" name="function" value="on"> Food<br>
-        </div>
+        
         <div class="signinbutton">
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign Up</button>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
         </div>
       </form>
-      <br>
-      <center><p><a href="customersignup.html">Or sign up</a> as customer.</p></center>
 
-      <link rel="stylesheet" type="text/css" href="css/signin.css">
-  <script type="text/javascript" src="js/ie-emulation-modes-warning.js"></script>
+      <div id="already-registered" style="display: none;">
+        <p>You are already registered as an agent</p>
+      </div>
+</div>
+
 
 
 
  
  <!-- FOOTER -->
- <div class="footer"
+ <div class="footer">
         <p class="pull-right"><a href="#">Back to top</a></p>
         <p>&copy; 2017 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
-      </footer>
 
     </div>
 </body>
  <!-- Include your style sheets at the bottom of the page: -->
+   <script type="text/javascript" src="js/ie-emulation-modes-warning.js"></script>
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="js/holder.min.js"></script>
   <script type="text/javascript" src="js/ie10-viewport-bug-workaround.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script>
+  <script type="text/javascript" src="js/custom.js"></script>
+
+  <script type="text/javascript">
+
+    firebase.auth().onAuthStateChanged(function(user) {
+
+      if(user){
+
+            console.log("Current user:",firebase.auth().currentUser.uid);
+
+            firebase.database()
+                    .ref('agents')
+                    .child(firebase.auth().currentUser.uid)
+                    .once('value')
+                    .then(function(data) {
+                      console.log('Agent',data.val());
+
+                      if(data.val())
+                      {
+                        $('#register-as-agent-form').hide();
+                        $('#already-registered').show();
+                      }
+                      else
+                      {
+                        $('#register-as-agent-form').show();
+                        $('#already-registered').hide();
+                      }
+
+                    });
+
+      }
+
+    });
+
+    $('#register-as-agent-form').submit(function(event){
+
+      event.preventDefault(); // Stop default functionality
+
+      console.log("Register as agent");
+
+      var inputContactnumber = $('#inputContactnumber').val();
+      var inputCompanyname = $('#inputCompanyname').val();
+      var inputCompanycontactnumber = $('#inputCompanycontactnumber').val();
+
+      var payload = {
+        contactNo: inputContactnumber,
+        companyName: inputCompanyname,
+        companyContact:inputCompanycontactnumber
+      };
+
+      console.log(payload);
+
+      var updates = {};
+      updates['/agents/'+firebase.auth().currentUser.uid] = payload;
+      firebase.database().ref().update(updates);
+
+
+    });
+  </script>
 </html>
