@@ -153,28 +153,42 @@
 
     </div>
 
+
+
     <button class="btn btn-danger btn-lg" id="login_with_google" style="display: none;">Login with Google</button>
       <button class="btn btn-warning btn-lg" id="logout" style="display: none;">Logout</button>
     </div>
   </div>
 </div>
 
-
+<script type="text/javascript" src="js/custom.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script>
+
+
+
+  <!-- Include your style sheets at the bottom of the page: -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="js/holder.min.js"></script>
+  <script type="text/javascript" src="js/ie10-viewport-bug-workaround.js"></script>
+
+   <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script>
+   <script>
+     var config = {
+    apiKey: "AIzaSyBmlZg90EbVcpgyqpUaalDkTSQyt3S0cR4",
+    authDomain: "test-1-b6e64.firebaseapp.com",
+    databaseURL: "https://test-1-b6e64.firebaseio.com",
+    projectId: "test-1-b6e64",
+    storageBucket: "test-1-b6e64.appspot.com",
+    messagingSenderId: "382839424607"
+  };
+  firebase.initializeApp(config);
+   </script>
+
 <script>
   // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyDER1hEA5D9g6NyypKg8MY_kbE1BuKM-F0",
-    authDomain: "bet-sample.firebaseapp.com",
-    databaseURL: "https://bet-sample.firebaseio.com",
-    projectId: "bet-sample",
-    storageBucket: "bet-sample.appspot.com",
-    messagingSenderId: "403051426152"
-  };
-
-  firebase.initializeApp(config);
 
     //Create an instance of the Google provider object:
     var provider = new firebase.auth.GoogleAuthProvider();
@@ -253,42 +267,8 @@
 
 </script>
 
-
-
-
-
-  <!-- Include your style sheets at the bottom of the page: -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="js/holder.min.js"></script>
-  <script type="text/javascript" src="js/ie10-viewport-bug-workaround.js"></script>
-
-   <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script>
-   <script src="js/custom.js"></script>
-
-  <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script>
-    <button class="btn btn-danger btn-lg" id="login_with_google" style="display: none;">Login with Google</button>
-      <button class="btn btn-warning btn-lg" id="logout" style="display: none;">Logout</button>
-    </div>
-  </div>
-</div>
-
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-<script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script>
 <script>
   // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyDER1hEA5D9g6NyypKg8MY_kbE1BuKM-F0",
-    authDomain: "bet-sample.firebaseapp.com",
-    databaseURL: "https://bet-sample.firebaseio.com",
-    projectId: "bet-sample",
-    storageBucket: "bet-sample.appspot.com",
-    messagingSenderId: "403051426152"
-  };
-
-  firebase.initializeApp(config);
 
     //Create an instance of the Google provider object:
     var provider = new firebase.auth.GoogleAuthProvider();
