@@ -39,7 +39,7 @@
       <div class="container">
 
         <nav class="navbar navbar-inverse navbar-static-top" style="background-color:transparent !important; border-color:transparent; background-image:none; box-shadow:none;">
-          <div c lass="container">
+          <div class="container">
             <div class="navbar-header">
               <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                 <span class="sr-only">Toggle navigation</span>
@@ -85,12 +85,6 @@
 
               </ul>
 
-              <form class="navbar-form navbar-right">
-              <div class="form-group">
-              <input type="text" class="form-control" placeholder="Name of a City...">
-              </div>
-              <button type="submit" class="btn btn-default" style="color:#000000">Submit</button>
-            </form>
             </div>
             
             </div>
@@ -106,7 +100,8 @@
 
         <div id="titlediv">
 
-          <h3 style="display: inline-block;font-family:'Merienda', cursive; font-size: 50px; font-color:#000000"><b>Brew Your Trip...</b></h3>
+          <h3 style="display: inline-block;font-family:'Merienda', cursive; font-size: 50px; font-color:#000000"><b>Brew Your Trip...</b></h3>  
+           <a href="savedplans.html"><button id="btn-warning" class="btn btn-success" style="float: right;"><b>Go To My Saved Plans</b></button></a>
          
         </div>
 
@@ -119,8 +114,9 @@
             <div class="row">
 
               <div class="col-md-4">
-               <h3>Location:</h3>
-              <div class="dropdown">
+               <h3 style="font-family: 'Shadows Into Light Two', cursive;"> <b>Location </b></h3>
+              <div class="dropdown" id="city_to_visit">
+
 
                 <select name="Select City" id="city" style="font-family: 'Merienda', cursive;width: 200px;height: 34px;">
                   <option value="delhi">Delhi</option>
@@ -137,8 +133,8 @@
                  <div class="container">
                     <div class="row">
                         <div class="col-sm-2" style="margin-right:60px;">
-                            <div class="form-group" style="width:200px;">
-                            <h3>Start Date</h3>
+                            <div class="form-group" style="width:200px;" id="start_date">
+                            <h3 style="font-family: 'Shadows Into Light Two', cursive;"> <b>Start Date</h3>
                                 <div class='input-group date' id='datetimepicker1'>
                                     <input type='text' class="form-control" />
                                     <span class="input-group-addon">
@@ -149,8 +145,8 @@
                         </div>
 
                         <div class="col-sm-2">
-                            <div class="form-group" style="width:200px;">
-                            <h3>End Date</h3>
+                            <div class="form-group" style="width:200px;" id="end_date">
+                            <h3 style="font-family: 'Shadows Into Light Two', cursive;"> <b>End Date </b></h3>
                                 <div class='input-group date' id='datetimepicker2'>
                                     <input type='text' class="form-control" />
                                     <span class="input-group-addon">
@@ -164,10 +160,13 @@
                 </div>  
 
               </div>
+              
 
             </div> 
 
+
               <hr>
+
 
               <div style="font-family: 'Calligraffitti', cursive;">
               <label class="control-label sr-only"> <b>Tell us about your trip? </b></label>
@@ -175,6 +174,7 @@
               </div>
 
               <br>
+              <div id="activities">
 
               <table class="table table-striped" style="font-family:'Patrick Hand SC', cursive; font-size: 20px; " >
                 <thead id='tablehead' style="display: none;">
@@ -187,6 +187,7 @@
 
                </tbody>  
               </table>
+              </div>
 
               <button id="submit" class="btn btn-primary" style="float: left;"><b>Submit</b></button>
               <br> 
@@ -197,9 +198,10 @@
 
             <div class="col-md-4">
               <div class="thumbnail">
-                  <img src="recpics/agrafort.jpg" alt="agra fort">
+
+                  <img src="recpics/taj.jpg" alt="agra fort">
                   <div class="caption">
-                    <h3 style="font-family:'Grand Hotel', cursive; font-size: 40px">Agra Fort</h3>
+                    <h3 style="font-family:'Grand Hotel', cursive; font-size: 40px">Taj Mahal</h3>
                     <p style="font-family:'Mallanna', sans-serif; font-size: 20px">
                     <b>Location: Agra, India</b> </p><br>
                   </div>
@@ -208,11 +210,12 @@
                 <hr>
 
                 <div class="thumbnail">
-                  <img src="recpics/agrafort.jpg" alt="agra fort">
+
+                  <img src="recpics/lotustemple.jpg" alt="agra fort">
                   <div class="caption">
-                    <h3 style="font-family:'Grand Hotel', cursive; font-size: 40px">Agra Fort</h3>
+                    <h3 style="font-family:'Grand Hotel', cursive; font-size: 40px">Lotus Temple</h3>
                     <p style="font-family:'Mallanna', sans-serif; font-size: 20px">
-                    <b>Location: Agra, India</b> </p><br>
+                    <b>Location: Delhi, India</b> </p><br>
                   </div>
                 </div>
               
@@ -224,10 +227,9 @@
 
     <div class="container" id="plan_public">
 
-      <div class="jumbotron">
-        <h1>Marketing stuff!</h1>
-        <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet.</p>
-        <p><a class="btn btn-lg btn-success" href="#" role="button">Get started today</a></p>
+      <div class="jumbotron" style="background-color: transparent  !important;">
+        <h2 style="font-family:'Delius', cursive; margin-top: 200px"><b>To Make Your Own Customizable Vacation....</h2></b>
+        <p class="lead" style="font-family: 'Merienda', cursive;"> Please <a href="login.html"> Login </a> or <a href="customersignup.html"> Sign-up </a>!!</p>
       </div>
 
 
@@ -236,13 +238,10 @@
     
 
       <!-- FOOTER -->
-    <div class="footer">
-      <footer style="padding-left: 175px">
+  <footer>
         <p class="pull-right"><a href="#"></a></p>
-        <p>&copy; 2017 TripBrew Company, Inc. <a href="#">Terms</a></p>
+        <p style="font-size:20px; font-family:'Indie Flower',cursive !important;"> &copy; 2017 TripBrew Company, Inc. &middot;<a href="vendorsignup.html">Register As Vendor</a></p>
       </footer>
-
-    </div>
 
   <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
   <script type="text/javascript" src="bower_components/moment/min/moment.min.js"></script>
@@ -340,7 +339,7 @@
 
       });
 
-
+});
     </script>
 
     <script type="text/javascript">
@@ -370,7 +369,7 @@
 
   });
 
-
+   
     </script>
 
   </body>
