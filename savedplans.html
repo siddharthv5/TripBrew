@@ -112,22 +112,7 @@
                   <th>Links to Plan</th>
                 </tr>
               </thead>
-              <tbody id="mytripdetails" style="font-family: 'Indie Flower', cursive; font-size: 20px" >
-
-                <tr>
-                  <td>Agra,Delhi</td>
-                  <td>31/4/19</td>
-                  <td>5/5/19</td>
-                  <td><a href="customerview.html">Click for Plan</a></td>
-                </tr>
-
-                <tr>
-                  <td>Rajasthan</td>
-                  <td>12/8/13</td>
-                  <td>15/8/13</td>
-                  <td><a href="customerview.html">Click for Plan</a></td>
-                </tr>
-               
+              <tbody id="mytripdetails" style="font-family: 'Indie Flower', cursive; font-size: 20px" >               
               </tbody>
             </table>
           </div>
@@ -154,6 +139,11 @@
 
   <script type="text/javascript" src= "js/custom.js"></script>
   <script type="text/javascript">
+  function generate_table_entry(City, Start, End, PlanID) {
+    return '<tr><td>'+City+'</td><td>'+Start+'</td><td>'+End+'</td><td><a href="customerview.html?id='+PlanID+'">Click for Plan</a></td></tr>';
+  }
+
+
     firebase.auth().onAuthStateChanged(function(user) {
       if (user) {
         $("#profilePic").attr('src', user.photoURL);
@@ -165,7 +155,7 @@
           snap = snapshot.val();
           for(var key in snap) {
             if (snap[key].uid == user.uid) {
-              console.log(snap[key]);
+              $('#mytripdetails').append(generate_table_entry(snap[key].city, snap[key].startDate.slice(4,15), snap[key].endDate.slice(4,15), key))
             }
           }
         });
