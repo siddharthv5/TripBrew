@@ -12,7 +12,6 @@
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="css/ie10-viewport-bug-workaround.css">
   <link rel="stylesheet" type="text/css" href="css/carousel.css">
-  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="css/dashboard.css">
   <link href="https://fonts.googleapis.com/css?family=Bubbler+One|Bungee+Inline|Calligraffitti|Caveat|Delius|Fredericka+the+Great|Grand+Hotel|Indie+Flower|Josefin+Sans|Josefin+Slab|Mallanna|Merienda|Patrick+Hand+SC|Petit+Formal+Script|Quattrocento+Sans|Shadows+Into+Light+Two|Walter+Turncoat" rel="stylesheet">
   <script type="text/javascript" src="js/ie-emulation-modes-warning.js"></script>
@@ -34,6 +33,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
+
               
               <a class="navbar-brand" href="homepage.html" style="font-family:'Bubbler One',sans-serif; font-size: 30px; color:#ffffff; padding-top:0 !important;">
               <img src="images/logorev.png" class="img-responsive" style="width: 150px;height: 60px;">
@@ -41,25 +41,38 @@
               </a>
 
             </div>
-            <div id="navbar" class="navbar-collapse collapse" style="font-family: 'Bubbler One', sans-serif; font-size: 20px;">
+            <div id="navbar" class="navbar-collapse collapse" style="font-family:'Bubbler One',sans-serif; font-size: 20px;">
               <ul class="nav navbar-nav">
+
                 <li><a href="homepage.html" style="color:#000000"><b>Home</b></a></li>
-                <li><a href="savedplans.html" style="color:#000000"><b>My Plan</b></a></li>
+                <li><a href="myplan.html" style="color:#000000"><b>My Plan</b></a></li>
                 <li><a href="recommended.html" style="color:#000000"><b>Recommended</b></a></li>
                 <li><a href="aboutus.html" style="color:#000000"><b>About Us</b></a></li>
           
                </ul>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"> 
                <ul class="nav navbar-nav navbar-right"> 
-               <li><a href="login.html" style="color:#000000"><b> Login</b></a></li>
-                <li> <a href="customersignup.html" style="color:#000000"><b>Sign Up</b></a></li>
-              </ul>
+                
+                <li>
+                  <a href="login.html" style="color:#000000;display: none;" id="header_login">
+                    <b> Login</b>
+                  </a>
+                </li>
 
-             
-            </div>
-            
-             
-            </div>
+                <li> 
+                  <a href="customersignup.html" style="color:#000000; display: none;" id="header_signup">
+                    <b>Sign Up</b>
+                  </a>
+                </li>
+
+                <li> 
+                  <a href="#" style="color:#000000; display: none;" id="header_logout">
+                    <b>Logout</b>
+                  </a>
+                </li>
+
+              </ul>
+     </div>
           </div>
         </nav>
 
@@ -77,11 +90,11 @@
               </thead>
               <tbody>
                 <tr>
-                  <td>Mr.XYZ</td>
-                  <td>xyz@gmail.com</td>
-                  <td>1111111111</td>
-                  <td>31/4/19</td>
-                  <td>5/5/19</td> 
+                  <td id="NameTd"></td>
+                  <td id="Email"></td>
+                  <td id="PhoneNumberTd"></td>
+                  <td id="StartDate"></td>
+                  <td id="EndDate"></td> 
                 </tr>
               </tbody>
             </table>
@@ -90,20 +103,10 @@
 <div class="container">
 
 <h4 style="font-family: 'Patrick Hand SC', cursive;font-size: 20px"><strong><u>Places to Visit</h4></strong></u>
-<p style="font-family: 'Patrick Hand SC', cursive;font-size: 20px">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<p style="font-family: 'Patrick Hand SC', cursive;font-size: 20px; " id="Places"></p>
 
 <h4><strong style="font-family: 'Patrick Hand SC', cursive;font-size: 20px"><u>Trip Details </h4></strong></u>
-<p style="font-family: 'Patrick Hand SC', cursive;font-size: 20px">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<p style="font-family: 'Patrick Hand SC', cursive;font-size: 20px" id="Details"></p>
           <br>
 
 <div class="">
@@ -119,49 +122,7 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                
               </tr>
             </thead>
-            <tbody>
-              <tr>
-                <td>1: 31/4/19</td>
-               <td>Paragliding, swimming, Shopping </td>
-              <td><form>
-               <input type="text" name="place..."><br> </form></td>
-              </tr>
-
-
-              <tr>
-                <td>2:1/5/19</td>
-                <td>Paragliding, swimming, Shopping </td>
-               <td><form>
-               <input type="text" name="place..."><br> </form></td>
-              </tr>
-
-              <tr>
-                <td>3: 2/5/19</td>
-                <td>Paragliding, swimming, Shopping </td>
-                <td><form>
-               <input type="text" name="place..."><br> </form></td>
-              </tr>
-
-              <tr>
-                <td>4: 3/5/19</td>
-                <td>Paragliding, swimming, Shopping </td>
-                <td><form>
-               <input type="text" name="place..."><br> </form></td>
-              </tr>
-
-              <tr>
-                <td>5: 4/5/19 </td>
-                <td>Paragliding, swimming, Shopping </td>
-                <td><form>
-               <input type="text" name="place..."><br> </form></td>
-              </tr>
-
-                <tr>
-                <td>6: 5/5/19 </td>
-                <td>Paragliding, swimming, Shopping </td>
-               <td><form>
-               <input type="text" name="place..."><br> </form></td>
-              </tr>
+            <tbody id="TableBody">
 
            </tbody>  
           </table>
@@ -169,10 +130,9 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 
         </div>
  
- <a href="savedplans.html"><button type="button" class="btn btn-success" style="margin-left: 1000px"> <b>Save as Draft </b></button>    <br><br><br>
 
 
-   <a href="savedplans.html"><button type="button" class="btn btn-danger" style="margin-left: 1000px"><b>Submit</b></button> <br>
+   <a><button type="button" class="btn btn-danger" style="margin-left: 50%" id="submit"><b>Submit</b></button> <br>
     <br>
   
 
@@ -193,5 +153,81 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="js/holder.min.js"></script>
   <script type="text/javascript" src="js/ie10-viewport-bug-workaround.js"></script>
+
+  <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script>
+  <script type="text/javascript" src= "js/custom.js"></script>
+  <script type="text/javascript">
+  function generate_table_entry(day, acts) {
+    return '<tr><td>'+day+'</td><td>'+acts+'</td><td><form><input type="text" name="place..." class="ChangeBox"><br> </form></td></tr>'
+  }
+  function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+  }
+
+  function genPhone(uid) {
+    res = '9';
+    for(i = 0; i < 9;i++) {
+      res+= uid.charCodeAt(i)%10;
+    }
+    return res
+  }
+
+
+    firebase.auth().onAuthStateChanged(function(user) {
+      if (user) {
+        console.log("Logged In")
+        plan_id = getParameterByName('id')
+        var database = firebase.database();
+        var planref = database.ref('plans/'+plan_id);
+        var acts;
+        var allplans = planref.once('value').then(function(snapshot) {
+          snap = snapshot.val();
+          $("#NameTd").html(user.displayName);
+          $("#Email").html(user.email);
+          $("#PhoneNumberTd").html(genPhone(user.uid));
+          $("#StartDate").html(snap.startDate.slice(4,15));
+          $("#EndDate").html(snap.endDate.slice(4,15));
+          $("#Places").html(snap.city);
+          $("#Details").html(snap.tripDetails);
+
+          acts = snap['activities']
+          for(var key in acts) {
+            $('#TableBody').append(generate_table_entry(parseInt(key)+1, acts[key]))
+          }
+        });
+
+        $('#submit').click(function() {
+
+        var activities = [];
+        $('.ChangeBox').each(function(key,value){
+          if (value.value == "") {
+            activities.push(acts[key]);
+          } else {
+            activities.push(value.value);
+          }
+          //activities.push($(value).val());
+        });
+        console.log(activities)
+
+      var updates = {};
+      updates['/plans/'+plan_id+'/activities'] = activities;
+      firebase.database().ref().update(updates).then(function(){
+        window.location.href = window.location.href;
+      });
+     
+
+    });
+      } else {
+        // No user is signed in.
+      }
+    });
+
+  </script>
 </html>
 
