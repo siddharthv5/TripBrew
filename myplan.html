@@ -270,8 +270,12 @@
                 start = $('#datetimepicker1').data("DateTimePicker").date();
                 end = $('#datetimepicker2').data("DateTimePicker").date();
                 if (start && end) {
-                  $('#tablehead').show();
                   days = end.diff(start, 'days')+1;
+                  if (days > 0) {
+                    $('#tablehead').show();
+                  } else {
+                    $('#tablehead').hide();
+                  }
                   saved_text = []
                   counter = 0
                   while(true) {
