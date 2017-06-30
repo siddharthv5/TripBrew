@@ -15,12 +15,8 @@
     messagingSenderId: "382839424607"
   };
   firebase.initializeApp(config);
-  var database = firebase.database();
-  var planref = database.ref('plans');
-  var currentuser = firebase.auth().currentUser;
 
   firebase.auth().onAuthStateChanged(function(user) {
-
     if(user){
 
       // Signed in
@@ -30,6 +26,7 @@
       $('#header_signup').hide();
       $('#login_with_google').hide();
       $('#logout').show();
+      
 
 
     }else{
