@@ -307,12 +307,9 @@
     </script>
 
     <script type="text/javascript">
-
-
-
-      
+    
       $('#submit').click(function(){
-
+          console.log("submit clicked")
 
         var activities = [];
 
@@ -330,16 +327,14 @@
         }
 
         var newPostKey = firebase.database().ref('plans').child('plans').push().key;
-
+        console.log("New key is " + newPostKey);
         var updates = {};
         updates['/plans/'+newPostKey] = planData;
-        firebase.database().ref().update(updates);
-
-        window.location="savedplans.html";
+        firebase.database().ref().update(updates).then(function(){window.location="savedplans.html";});
+        console.log("Updated");
+       
 
       });
-
-});
     </script>
 
     <script type="text/javascript">
