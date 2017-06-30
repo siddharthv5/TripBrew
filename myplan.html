@@ -122,18 +122,12 @@
                <h3>Location:</h3>
               <div class="dropdown">
 
-                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                  Choose your City
-                  <span class="caret"></span>
-                </button>
-
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" style="font-family: 'Merienda', cursive;">
-                  <li><a href="#">Delhi</a></li>
-                  <li><a href="#">Agra</a></li>
-                  <li><a href="#">Rajasthan</a></li>
-                  <li><a href="#">Hyderabad</a></li>
-                  
-                </ul>
+                <select name="Select City" id="city" style="font-family: 'Merienda', cursive;width: 200px;height: 34px;">
+                  <option value="delhi">Delhi</option>
+                  <option value="agra">Agra</option>
+                  <option value="rajasthan">Rajasthan</option>
+                  <option value="hyderabad">Hyderabad</option>
+                </select>
 
               </div> 
 
@@ -175,8 +169,8 @@
 
               <hr>
 
-              <div class="" style="font-family: 'Calligraffitti', cursive;">
-              <label class="control-label sr-only" for="trip_details"> <b>Tell us about your trip? </b></label>
+              <div style="font-family: 'Calligraffitti', cursive;">
+              <label class="control-label sr-only"> <b>Tell us about your trip? </b></label>
               <textarea name="trip_details" rows="3" cols="50" id="trip_details" class="form-control" placeholder="Please mention the trip details here"></textarea>
               </div>
 
@@ -194,7 +188,7 @@
                </tbody>  
               </table>
 
-              <a href="savedplans.html"><button type="button" class="btn btn-primary" style="float: left;"><b>Submit</b></button></a>
+              <button id="submit" class="btn btn-primary" style="float: left;"><b>Submit</b></button>
               <br> 
               <br>
 
@@ -203,7 +197,7 @@
 
             <div class="col-md-4">
               <div class="thumbnail">
-                  <img src="recpics/agrafort.jpg" alt="...">
+                  <img src="recpics/agrafort.jpg" alt="agra fort">
                   <div class="caption">
                     <h3 style="font-family:'Grand Hotel', cursive; font-size: 40px">Agra Fort</h3>
                     <p style="font-family:'Mallanna', sans-serif; font-size: 20px">
@@ -214,7 +208,7 @@
                 <hr>
 
                 <div class="thumbnail">
-                  <img src="recpics/agrafort.jpg" alt="...">
+                  <img src="recpics/agrafort.jpg" alt="agra fort">
                   <div class="caption">
                     <h3 style="font-family:'Grand Hotel', cursive; font-size: 40px">Agra Fort</h3>
                     <p style="font-family:'Mallanna', sans-serif; font-size: 20px">
@@ -288,7 +282,7 @@
                   }
                   $('#tablebody').html('');
                   for (var i =0 ; i < days; i++) {
-                    $('#tablebody').append('<tr><td>' + (i+1) + '</td><td><form><input type="text" name="place..." id="activitytext'+i+'"><br> </form></td></td></tr>');
+                    $('#tablebody').append('<tr><td>' + (i+1) + '</td><td><form><input type="text" name="place..." class="activitytext" id="activitytext'+i+'"><br> </form></td></td></tr>');
                     $('activitytext'+i).val(saved_text[i]);
                   }
                 } else {
@@ -311,6 +305,42 @@
     });
 
   });
+    </script>
+
+    <script type="text/javascript">
+
+
+
+      
+      $('#submit').click(function(){
+
+
+        var activities = [];
+
+        $('.activitytext').each(function(key,value){
+          activities.push($(value).val());
+        })
+
+        var planData = {
+          uid: firebase.auth().currentUser.uid,
+          city: $('#city').val(),
+          startDate: $('#datetimepicker1').data("DateTimePicker").date().toString(),
+          endDate: $('#datetimepicker2').data("DateTimePicker").date().toString(),
+          tripDetails: $('#trip_details').val(),
+          activities: activities
+        }
+
+        var newPostKey = firebase.database().ref('plans').child('plans').push().key;
+
+        var updates = {};
+        updates['/plans/'+newPostKey] = planData;
+        firebase.database().ref().update(updates);
+
+        window.location="savedplans.html";
+
+      });
+
+
     </script>
 
     <script type="text/javascript">
