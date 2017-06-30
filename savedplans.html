@@ -16,7 +16,6 @@
 <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="css/ie10-viewport-bug-workaround.css">
   <link rel="stylesheet" type="text/css" href="css/carousel.css">
-  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="css/dashboard.css">
   <link href="https://fonts.googleapis.com/css?family=Bubbler+One|Bungee+Inline|Fredericka+the+Great|Indie+Flower|Josefin+Sans|Josefin+Slab|Mallanna|Patrick+Hand+SC|Quattrocento+Sans|Shadows+Into+Light+Two|Walter+Turncoat" rel="stylesheet">
   <script type="text/javascript" src="js/ie-emulation-modes-warning.js"></script>
@@ -117,32 +116,25 @@
             <table class="table table-striped" >
               <thead style="font-family: 'Bubbler One', sans-serif; font-size: 20px">
                 <tr>
-                  <th>Plan No.</th>
                   <th>Location(s) of Travel</th>
-                  <th>Status</th>
                   <th>Start Date</th>
                   <th>End Date</th>
-                  <th>Price</th>
                   <th>Links to Plan</th>
                 </tr>
               </thead>
-              <tbody style="font-family: 'Indie Flower', cursive; font-size: 20px" >
+              <tbody id="mytripdetails" style="font-family: 'Indie Flower', cursive; font-size: 20px" >
+
                 <tr>
-                  <td>1</td>
                   <td>Agra,Delhi</td>
-                  <td>Submitted</td>
                   <td>31/4/19</td>
                   <td>5/5/19</td>
-                   <td> 1500$ </td>
                   <td><a href="customerview.html">Click for Plan</a></td>
                 </tr>
+
                 <tr>
-                  <td>2</td>
                   <td>Rajasthan</td>
-                  <td>Submitted</td>
                   <td>12/8/13</td>
                   <td>15/8/13</td>
-                   <td> Not Given</td>
                   <td><a href="customerview.html">Click for Plan</a></td>
                 </tr>
                
@@ -161,16 +153,9 @@
 
     </div>
 
-    <script type="text/javascript">
-        $(function () {
-            $('#datetimepicker1').datetimepicker();
-        });
-    </script>
-
 
   <!-- Include your style sheets at the bottom of the page: -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <script type="text/javascript" src="js/moment-with-locales.js"</script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="js/holder.min.js"></script>
   <script type="text/javascript" src="js/ie10-viewport-bug-workaround.js"></script>
@@ -178,6 +163,7 @@
   <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script>
 
   <script type="text/javascript" src= "js/custom.js"></script>
+
 </body>
 
 </html>
