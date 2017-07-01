@@ -12,7 +12,6 @@
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="css/ie10-viewport-bug-workaround.css">
   <link rel="stylesheet" type="text/css" href="css/carousel.css">
-  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="css/dashboard.css">
    <link href="https://fonts.googleapis.com/css?family=Bubbler+One|Bungee+Inline|Calligraffitti|Caveat|Delius|Fredericka+the+Great|Grand+Hotel|Indie+Flower|Josefin+Sans|Josefin+Slab|Mallanna|Merienda|Patrick+Hand+SC|Petit+Formal+Script|Quattrocento+Sans|Shadows+Into+Light+Two|Walter+Turncoat" rel="stylesheet">
   <script type="text/javascript" src="js/ie-emulation-modes-warning.js"></script>
@@ -61,7 +60,25 @@
                </ul>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"> 
                <ul class="nav navbar-nav navbar-right"> 
-               <li><a href="login.html" style="color:#000000"><b> Login </b></a></li>
+                
+                <li>
+                  <a href="login.html" style="color:#000000;display: none;" id="header_login">
+                    <b> Login</b>
+                  </a>
+                </li>
+
+                <li> 
+                  <a href="customersignup.html" style="color:#000000; display: none;" id="header_signup">
+                    <b>Sign Up</b>
+                  </a>
+                </li>
+
+                <li> 
+                  <a href="#" style="color:#000000; display: none;" id="header_logout">
+                    <b>Logout</b>
+                  </a>
+                </li>
+
               </ul>
 
               
@@ -80,10 +97,10 @@
 
           <div class="row placeholders">
             <div class="col-xs-6 col-sm-3 placeholder" style="text-align: left;">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
+              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail" id="ProfilePic">
               <div style="padding-left: 35px">
-              <h4 style="font-family:'Delius', cursive; font-size: 30px"> <strong>Bob Hamilton</h4></strong>
-              <span class="text-muted" style="font-family:'Delius', cursive; font-size: 20px">1234567890</span>
+              <h4 style="font-family:'Delius', cursive; font-size: 30px"> <strong id="VendorName"></strong></h4>
+              <span class="text-muted" style="font-family:'Delius', cursive; font-size: 20px" id="PhoneNo">1234567890</span>
               </div>
             </div>
           </div>
@@ -101,64 +118,8 @@
                   <th>Plan</th>
                 </tr>
               </thead>
-              <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>xyz@gmail.com</td>
-                  <td>1111111111</td>
-                  <td>31/4/19</td>
-                  <td>5/5/19</td>
-                  <td><a href="vendorview.html">Click for Plan</a></td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>tanvi@gmail.com</td>
-                  <td>000000000</td>
-                  <td>12/8/13</td>
-                  <td>15/8/13</td>
-                  <td><a href="vendorview.html">Click for Plan</a></td>
-                </tr>
-                 <tr>
-                  <td>3</td>
-                  <td>hemaanya@gmail.com</td>
-                  <td>2222222222</td>
-                  <td>12/8/13</td>
-                  <td>15/8/13</td>
-                  <td><a href="vendorview.html">Click for Plan</a></td>
-                </tr>
-                 <tr>
-                  <td>4</td>
-                  <td>ajitha@gmail.com</td>
-                  <td>3333333333</td>
-                  <td>12/8/13</td>
-                  <td>15/8/13</td>
-                  <td><a href="vendorview.html">Click for Plan</a></td>
-                </tr>
-                 <tr>
-                  <td>5</td>
-                  <td>gautam@gmail.com</td>
-                  <td>4444444444</td>
-                  <td>12/8/13</td>
-                  <td>15/8/13</td>
-                  <td><a href="vendorview.html">Click for Plan</a></td>
-                </tr>
-                 <tr>
-                  <td>6</td>
-                  <td>siddharth@gmail.com</td>
-                  <td>5555555555</td>
-                  <td>12/8/13</td>
-                  <td>15/8/13</td>
-                  <td><a href="vendorview.html">Click for Plan</a></td>
-                </tr>
-                 <tr>
-                  <td>7</td>
-                  <td>pranathi@gmail.com</td>
-                  <td>6666666666</td>
-                  <td>12/8/13</td>
-                  <td>15/8/13</td>
-                  <td><a href="vendorview.html">Click for Plan</a></td>
-                </tr>
-               
+              <tbody id="tableBody">
+                
               </tbody>
             </table>
           </div>
@@ -184,56 +145,41 @@
  
 <script>
 
+  function genPhone(uid) {
+    res = '9';
+    for(i = 0; i < 9;i++) {
+      res+= uid.charCodeAt(i)%10;
+    }
+    return res
+  }
+
+  function generate_table_entry(id, key, plan) {
+    return '<tr><td>'+id+'</td><td>'+plan.email+'</td><td>'+genPhone(plan.uid)+'</td><td>'+plan.startDate.slice(4,15)+'</td><td>'+plan.endDate.slice(4,15)+'</td><td><a href="vendorview.html?id='+key+'">Click for Plan</a></td></tr>'
+  }
+
   firebase.auth().onAuthStateChanged(function(user) {
 
       if(user){
-
-            console.log("Current user:",firebase.auth().currentUser.uid);
-
-            firebase.database()
+        $("#VendorName").html(user.displayName);
+        $("#ProfilePic").attr('src', user.photoURL);
+        firebase.database()
                     .ref('agents')
                     .child(firebase.auth().currentUser.uid)
                     .once('value')
                     .then(function(data) {
-                      console.log('Agent',data.val());
-
-                      if(data.val())
-                      {
-                        $('#register-as-agent-form').hide();
-                        $('#already-registered').show();
-                      }
-                      else
-                      {
-                        $('#register-as-agent-form').show();
-                        $('#already-registered').hide();
-                      }
-
+                      $('#PhoneNo').html(data.val().contactNo);
                     });
 
+        firebase.database().ref('plans').once('value').then(function(snapshot) {
+          snap = snapshot.val();
+          count = 1
+          for (var key in snap) {
+            $('#tableBody').append(generate_table_entry(count, key, snap[key]));
+            count += 1
+          }
+        })
       }
 
     }); 
-  $('#register-as-agent-form').submit(function(event){
-
-      event.preventDefault(); // Stop default functionality
-
-      console.log("Register as agent");
-
-      var inputContactnumber = $('#inputContactnumber').val();
-      var inputCompanyname = $('#inputCompanyname').val();
-
-      var payload = {
-        contactNo: inputContactnumber,
-        companyName: inputCompanyname,
-      };
-
-      console.log(payload);
-
-      var updates = {};
-      updates['/agents/'+firebase.auth().currentUser.uid] = payload;
-      firebase.database().ref().update(updates);
-
-
-    });
 </script>
 </html>

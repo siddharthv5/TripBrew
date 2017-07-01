@@ -323,7 +323,9 @@
           startDate: $('#datetimepicker1').data("DateTimePicker").date().toString(),
           endDate: $('#datetimepicker2').data("DateTimePicker").date().toString(),
           tripDetails: $('#trip_details').val(),
-          activities: activities
+          activities: activities,
+          email: user.email,
+          price: -1
         }
 
         var newPostKey = firebase.database().ref('plans').child('plans').push().key;

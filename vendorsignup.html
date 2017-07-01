@@ -28,7 +28,7 @@
     }
 
 .signinbutton{
-  margin-left: 575px; width: 200px;
+  margin-left:150px; width: 200px;margin-top: 50px;
 }
 
 </style>
@@ -109,6 +109,7 @@
 
       <div id="already-registered" style="display: none;">
         <p style="font-family:'Walter Turncoat', cursive; font-size: 30px"> <center> <strong>You are already registered as an agent.. </strong></center></p>
+        <p style="font-family:'Walter Turncoat', cursive; font-size: 30px"> <center> <strong>Redirecting you to Vendor Homepage! </strong></center></p>
       </div>
 </div>
 
@@ -150,12 +151,13 @@
                       if(data.val())
                       {
                         $('#register-as-agent-form').hide();
-                        $('#already-registered').show();
+                        $('#already-registered').show().then(setTimeout(function(){window.location="vendorhome.html";},1000));
                       }
                       else
                       {
-                        $('#register-as-agent-form').show();
                         $('#already-registered').hide();
+                        $('#register-as-agent-form').show()
+                        
                       }
 
                     });
@@ -183,7 +185,7 @@
       var updates = {};
       updates['/agents/'+firebase.auth().currentUser.uid] = payload;
       firebase.database().ref().update(updates);
- window.location.href="vendorhome.html"
+      window.location.href="vendorhome.html"
 
     });
   </script>
