@@ -40,7 +40,7 @@
               </button>
 
               
-              <a class="navbar-brand" href="homepage.html" style="font-family:'Bubbler One',sans-serif; font-size: 30px; color:#ffffff; padding-top:0 !important;">
+              <a class="navbar-brand" href="index.html" style="font-family:'Bubbler One',sans-serif; font-size: 30px; color:#ffffff; padding-top:0 !important;">
               <img src="images/logorev.png" class="img-responsive" style="width: 150px;height: 60px;">
 
               </a>
@@ -49,7 +49,7 @@
             <div id="navbar" class="navbar-collapse collapse" style="font-family:'Bubbler One',sans-serif; font-size: 20px;">
               <ul class="nav navbar-nav">
 
-                <li><a href="homepage.html" style="color:#000000"><b>Home</b></a></li>
+                <li><a href="index.html" style="color:#000000"><b>Home</b></a></li>
                 <li><a href="myplan.html" style="color:#000000"><b>My Plan</b></a></li>
                 <li><a href="recommended.html" style="color:#000000"><b>Recommended</b></a></li>
                 <li><a href="aboutus.html" style="color:#000000"><b>About Us</b></a></li>
@@ -138,8 +138,12 @@
   <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script>
   <script type="text/javascript" src= "js/custom.js"></script>
   <script type="text/javascript">
-  function generate_table_entry(City, Start, End, PlanID) {
-    return '<tr><td>'+City+'</td><td>'+Start+'</td><td>'+End+'</td><td><a href="customerview.html?id='+PlanID+'">Click for Plan</a></td></tr>';
+  function generate_table_entry(City, Start, End, PlanID, bidded) {
+    var background = '';
+    if (bidded) {
+      background = ' style="background-color:#5cb85c"'
+    }
+    return '<tr'+background+'><td>'+City+'</td><td>'+Start+'</td><td>'+End+'</td><td><a href="customerview.html?id='+PlanID+'">Click for Plan</a></td></tr>';
   }
 
 
@@ -154,7 +158,7 @@
           snap = snapshot.val();
           for(var key in snap) {
             if (snap[key].uid == user.uid) {
-              $('#mytripdetails').append(generate_table_entry(snap[key].city, snap[key].startDate.slice(4,15), snap[key].endDate.slice(4,15), key))
+              $('#mytripdetails').append(generate_table_entry(snap[key].city, snap[key].startDate.slice(4,15), snap[key].endDate.slice(4,15), key, snap[key].bidder))
             }
           }
         });
