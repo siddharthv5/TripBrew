@@ -111,6 +111,11 @@
         <p style="font-family:'Walter Turncoat', cursive; font-size: 30px"> <center> <strong>You are already registered as an agent.. </strong></center></p>
         <p style="font-family:'Walter Turncoat', cursive; font-size: 30px"> <center> <strong>Redirecting you to Vendor Homepage! </strong></center></p>
       </div>
+
+      <div id="not-logged-in" style="display: none;">
+        <p style="font-family:'Walter Turncoat', cursive; font-size: 30px"> <center> <strong>Please log in to be able to access Vendor facilities.. </strong></center></p>
+        <p style="font-family:'Walter Turncoat', cursive; font-size: 30px"> <center> <strong>Redirecting you to Login Page! </strong></center></p>
+      </div>
 </div>
 
 
@@ -118,10 +123,13 @@
 
  
  <!-- FOOTER -->
-<footer>
+ <div class="footer">
+       <footer>
         <p class="pull-right"><a href="#"></a></p>
-        <p style="font-size:20px; font-family:'Indie Flower',cursive !important;"> &copy; 2017 TripBrew Company, Inc. 
+        <p style="font-size:20px; font-family:'Indie Flower',cursive !important;"> &copy; 2017 TripBrew Company, Inc. &middot;<a href="vendorsignup.html" class="pull-right">Go To Vendor Page</a></p>
       </footer>
+
+    </div>
 </body>
  <!-- Include your style sheets at the bottom of the page: -->
    <script type="text/javascript" src="js/ie-emulation-modes-warning.js"></script>
@@ -162,6 +170,9 @@
 
                     });
 
+      } else {
+        $("#not-logged-in").show();
+        setInterval(function(){window.location="login.html"}, 5000)
       }
 
     });
