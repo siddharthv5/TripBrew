@@ -84,6 +84,7 @@
                   <th>Name</th>
                   <th>Email Address</th>
                   <th>Phone No.</th>
+                  <th>Best Price</th>
                   <th>Start Date</th>
                   <th>End Date</th>
                 </tr>
@@ -93,6 +94,7 @@
                   <td id="NameTd"></td>
                   <td id="Email"></td>
                   <td id="PhoneNumberTd"></td>
+                  <td id="Bid"></td>
                   <td id="StartDate"></td>
                   <td id="EndDate"></td> 
                 </tr>
@@ -195,6 +197,11 @@
           $("#EndDate").html(snap.endDate.slice(4,15));
           $("#Places").html(snap.city);
           $("#Details").html(snap.tripDetails);
+          if (snap.price == -1) {
+            $("#Bid").html("No Bids yet")
+          } else {
+            $("#Bid").html(snap.price)
+          }
 
           acts = snap['activities']
           for(var key in acts) {

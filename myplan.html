@@ -340,7 +340,16 @@
     </script>
 
     <script type="text/javascript">
-    
+      
+    firebase.auth().onAuthStateChanged(function(user) {
+
+    if(user){
+
+      // Signed in
+
+      $('#my_plan').show();
+      $('#plan_public').hide();
+
       $('#submit').click(function(){
           console.log("submit clicked")
 
@@ -370,20 +379,6 @@
        
 
       });
-    </script>
-
-    <script type="text/javascript">
-      
-    firebase.auth().onAuthStateChanged(function(user) {
-
-    if(user){
-
-      // Signed in
-
-      $('#my_plan').show();
-      $('#plan_public').hide();
-
-      
 
 
     }else{
