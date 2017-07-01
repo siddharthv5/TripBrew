@@ -111,7 +111,7 @@
               <thead>
                 <tr>
                   <th>Name</th>
-                  <th>Email Address</th>
+                  <th>Location</th>
                   <th>Phone No.</th>
                   <th>Start Date</th>
                   <th>End Date</th>
@@ -154,7 +154,7 @@
   }
 
   function generate_table_entry(id, key, plan) {
-    return '<tr><td>'+id+'</td><td>'+plan.email+'</td><td>'+genPhone(plan.uid)+'</td><td>'+plan.startDate.slice(4,15)+'</td><td>'+plan.endDate.slice(4,15)+'</td><td><a href="vendorview.html?id='+key+'">Click for Plan</a></td></tr>'
+    return '<tr><td>'+id+'</td><td>'+plan.city+'</td><td>'+genPhone(plan.uid)+'</td><td>'+plan.startDate.slice(4,15)+'</td><td>'+plan.endDate.slice(4,15)+'</td><td><a href="vendorview.html?id='+key+'">Click for Plan</a></td></tr>'
   }
 
   firebase.auth().onAuthStateChanged(function(user) {

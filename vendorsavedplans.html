@@ -12,7 +12,6 @@
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="css/ie10-viewport-bug-workaround.css">
   <link rel="stylesheet" type="text/css" href="css/carousel.css">
-  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="css/dashboard.css">
    <link href="https://fonts.googleapis.com/css?family=Bubbler+One|Bungee+Inline|Calligraffitti|Caveat|Delius|Fredericka+the+Great|Grand+Hotel|Indie+Flower|Josefin+Sans|Josefin+Slab|Mallanna|Merienda|Patrick+Hand+SC|Petit+Formal+Script|Quattrocento+Sans|Shadows+Into+Light+Two|Walter+Turncoat" rel="stylesheet">
   <script type="text/javascript" src="js/ie-emulation-modes-warning.js"></script>
@@ -101,7 +100,7 @@
               <thead>
                 <tr>
                   <th>Name</th>
-                  <th>Email Address</th>
+                  <th>Location</th>
                   <th>Phone No.</th>
                   <th>Start Date</th>
                   <th>End Date</th>
@@ -109,16 +108,8 @@
                   <th>Plan</th>
                 </tr>
               </thead>
-              <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>xyz@gmail.com</td>
-                  <td>1111111111</td>
-                  <td>31/4/19</td>
-                  <td>5/5/19</td>
-                  <td>$1500</td>
-                  <td><a href="vendorview.html">Click for Plan</a></td>
-                </tr>
+              <tbody id="tableBody">
+               
               </tbody>
             </table>
           </div>
@@ -138,6 +129,38 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="js/holder.min.js"></script>
   <script type="text/javascript" src="js/ie10-viewport-bug-workaround.js"></script>
-      <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script>
-          <script src="js/custom.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script>
+  <script src="js/custom.js"></script>
+  <script>
+
+  function genPhone(uid) {
+    res = '9';
+    for(i = 0; i < 9;i++) {
+      res+= uid.charCodeAt(i)%10;
+    }
+    return res
+  }
+
+  function generate_table_entry(id, key, plan) {
+    return '<tr><td>'+id+'</td><td>'+plan.city+'</td><td>'+genPhone(plan.uid)+'</td><td>'+plan.startDate.slice(4,15)+'</td><td>'+plan.endDate.slice(4,15)+'</td><td>'+plan.price+'</td><td><a href="vendorview.html?id='+key+'">Click for Plan</a></td></tr>'
+  }
+
+  firebase.auth().onAuthStateChanged(function(user) {
+
+      if(user){
+        firebase.database().ref('plans').once('value').then(function(snapshot) {
+          snap = snapshot.val();
+          count = 1
+          for (var key in snap) {
+            console.log(snap[key].bidder, user.uid)
+            if (snap[key].bidder == user.uid) {
+              $('#tableBody').append(generate_table_entry(count, key, snap[key]));
+              count += 1
+            }
+          }
+        })
+      }
+
+    }); 
+</script>
 </html>

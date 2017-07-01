@@ -12,7 +12,6 @@
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="css/ie10-viewport-bug-workaround.css">
   <link rel="stylesheet" type="text/css" href="css/carousel.css">
-  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="css/dashboard.css">
   <link href="https://fonts.googleapis.com/css?family=Bubbler+One|Bungee+Inline|Calligraffitti|Caveat|Delius|Fredericka+the+Great|Grand+Hotel|Indie+Flower|Josefin+Sans|Josefin+Slab|Mallanna|Merienda|Patrick+Hand+SC|Petit+Formal+Script|Quattrocento+Sans|Shadows+Into+Light+Two|Walter+Turncoat" rel="stylesheet">
   <script type="text/javascript" src="js/ie-emulation-modes-warning.js"></script>
@@ -77,7 +76,10 @@
             </div>
           </div>
         </nav>
-    <h2 class="sub-header" style="margin-left: 50px; font-family:'Fredericka the Great', cursive; font-size: 50px;"><b><center> Customer's Plan</h2></b></center>
+    <h2 class="sub-header" style="margin-left: 50px; font-family:'Fredericka the Great', cursive; font-size: 50px;"><b><center> Customer's Plan</b></center>
+    <a href="vendorsavedplans.html"><button type="button" class="btn btn-success" style="margin-left: 1000px"> <b> Back to My Plans</b></button></a>
+    </h2>
+
           <div class="table-responsive">
             <table class="table table-striped" style="font-family: 'Patrick Hand SC', cursive;font-size: 20px">
               <thead>
@@ -85,19 +87,18 @@
                   <th>Name</th>
                   <th>Email Address</th>
                   <th>Phone No.</th>
-                  <th>Pricing</th>
+                  <th>Lowest Offer</th>
                   <th>Start Date</th>
                   <th>End Date</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>Mr.XYZ</td>
-                  <td>xyz@gmail.com</td>
-                  <td>1111111111</td>
-                  <td> $1500</td>
-                  <td>31/4/19</td>
-                  <td>5/5/19</td> 
+                <td id="NameTd"></td>
+                <td id="Email"></td>
+                <td id="PhoneNumberTd"></td>
+                <td id="Bid"></td>
+                <td id="StartDate"></td>
+                <td id="EndDate"></td> 
                 </tr>
               </tbody>
             </table>
@@ -106,20 +107,10 @@
 <div class="container">
 
 <h4 style="font-family: 'Patrick Hand SC', cursive;font-size: 20px"><strong><u>Places to Visit</h4></strong></u>
-<p style="font-family: 'Patrick Hand SC', cursive;font-size: 20px">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<p style="font-family: 'Patrick Hand SC', cursive;font-size: 20px" id="Places"></p>
 
 <h4><strong style="font-family: 'Patrick Hand SC', cursive;font-size: 20px"><u>Trip Details </h4></strong></u>
-<p style="font-family: 'Patrick Hand SC', cursive;font-size: 20px">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<p style="font-family: 'Patrick Hand SC', cursive;font-size: 20px" id='Details'></p>
           <br>
 
 <div class="">
@@ -135,49 +126,7 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                
               </tr>
             </thead>
-            <tbody>
-              <tr>
-                <td>1: 31/4/19</td>
-               <td>Paragliding, swimming, Shopping </td>
-              <td><form>
-            
-              </tr>
-
-
-              <tr>
-                <td>2:1/5/19</td>
-                <td>Paragliding, swimming, Shopping </td>
-               <td><form>
-               
-              </tr>
-
-              <tr>
-                <td>3: 2/5/19</td>
-                <td>Paragliding, swimming, Shopping </td>
-                <td><form>
-               
-              </tr>
-
-              <tr>
-                <td>4: 3/5/19</td>
-                <td>Paragliding, swimming, Shopping </td>
-                <td><form>
-              
-              </tr>
-
-              <tr>
-                <td>5: 4/5/19 </td>
-                <td>Paragliding, swimming, Shopping </td>
-                <td><form>
-              
-              </tr>
-
-                <tr>
-                <td>6: 5/5/19 </td>
-                <td>Paragliding, swimming, Shopping </td>
-               <td><form>
-             
-              </tr>
+            <tbody id="TableBody">
 
            </tbody>  
           </table>
@@ -189,11 +138,7 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 
     <br>
     
-     
-
-
-<a href="vendorsavedplans.html"><button type="button" class="btn btn-success" style="margin-left: 1000px"> <b> Back to My Plans</b></button>    <br><br><br>
-   <a href="vendorsavedplans.html"><button type="button" class="btn btn-danger" style="margin-left: 1000px"><b> Edit Price</b></button> <br> <br> <form> <input type="text" name="place..." style="margin-left: 1000px"><br> </form>
+    <form><input type="text" name="place..." style="margin-left: 460px" id="OfferForm"><br> </form><br> <button type="button" class="btn btn-danger" style="margin-left: 500px" id="OfferButton"><b>Make Offer</b></button>
     <br>
   
 
@@ -215,6 +160,79 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
   <script type="text/javascript" src="js/holder.min.js"></script>
   <script type="text/javascript" src="js/ie10-viewport-bug-workaround.js"></script>
  <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script>
-          <script src="js/custom.js"></script>
+ <script src="js/custom.js"></script>
+
+ <script type="text/javascript">
+  function generate_table_entry(day, acts) {
+    return '<tr><td>'+day+'</td><td>'+acts+'</td></tr>'
+  }
+  function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+  }
+
+  function genPhone(uid) {
+    res = '9';
+    for(i = 0; i < 9;i++) {
+      res+= uid.charCodeAt(i)%10;
+    }
+    return res
+  }
+
+
+    firebase.auth().onAuthStateChanged(function(user) {
+      if (user) {
+        console.log("Logged In")
+        plan_id = getParameterByName('id')
+        var database = firebase.database();
+        var planref = database.ref('plans/'+plan_id);
+        var snap;
+        var allplans = planref.once('value').then(function(snapshot) {
+          snap = snapshot.val();
+          $("#NameTd").html(user.displayName);
+          $("#Email").html(user.email);
+          $("#PhoneNumberTd").html(genPhone(user.uid));
+          $("#StartDate").html(snap.startDate.slice(4,15));
+          $("#EndDate").html(snap.endDate.slice(4,15));
+          $("#Places").html(snap.city);
+          $("#Details").html(snap.tripDetails);
+          if (snap.price == -1) {
+            $("#Bid").html("No Bids yet")
+          } else {
+            $("#Bid").html(snap.price)
+          }
+
+          acts = snap['activities']
+          for(var key in acts) {
+            $('#TableBody').append(generate_table_entry(parseInt(key)+1, acts[key]))
+          }
+        });
+
+        $('#OfferButton').click(function() {
+          if (parseInt($("#OfferForm").val()) <= 0) {
+            alert("We are not a charity!");
+          }
+          if ((parseInt($("#OfferForm").val()) < snap.price) ||snap.price == -1) {
+            var updates = {};
+            updates['/plans/'+plan_id+'/price'] = parseInt($("#OfferForm").val());
+            updates['/plans/'+plan_id+'/bidder'] = user.uid;
+            firebase.database().ref().update(updates).then(function(){
+              window.location.href = window.location.href;
+            });
+          } else {
+            alert("Bid price must be cheaper than cheapest price!");
+          }
+    });
+      } else {
+        // No user is signed in.
+      }
+    });
+
+  </script>
 </html>
 
